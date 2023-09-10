@@ -1,13 +1,17 @@
 pipeline{
     agent any
     parameters{
-        string(name: 'JENKINS_ADMIN_PUBLIC_IP', defaultValue: '' description: 'My IP address Public IP')
-        string(name: 'JENKINS_ADMIN_LOCATION', defaultValue: '' description: 'Location of the admin user')
-        string(name: 'DATE_TIME', defaultValue: '' description: 'Date and time of the change')
+        string(name: 'JENKINS_ADMIN_PUBLIC_IP', defaultValue: '', description: 'My IP address Public IP')
+        string(name: 'JENKINS_ADMIN_LOCATION', defaultValue: '', description: 'Location of the admin user')
+        string(name: 'DATE_TIME', defaultValue: '', description: 'Date and time of the change')
     }
     environment{
         AWS_REGION = 'eu-north-1'
         JENKINS_SECURITY_GROUP_ID = 'sg-07712f4d00378fd1c'
+    }
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 3, unit: 'MINUTES')
     }
     stages{
         stage('Change IP'){
@@ -29,3 +33,4 @@ pipeline{
             }
         }
     }
+}
