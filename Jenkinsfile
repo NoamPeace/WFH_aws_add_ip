@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        string(name: 'JENKINS_ADMIN_PUBLIC_IP', defaultValue: '', description: 'My IP address Public IP')
+        string(name: 'JENKINS_ADMIN_PUBLIC_IP', defaultValue: '', description: 'My IP address Public IP (https://checkip.amazonaws.com/)')
         string(name: 'JENKINS_ADMIN_LOCATION', defaultValue: '', description: 'Location of the admin user')
         string(name: 'DATE_TIME', defaultValue: '', description: 'Date and time of the change')
     }
